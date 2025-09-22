@@ -79,7 +79,7 @@ contract MemeToken is ERC20 {
 
     // Meme转账函数，实现代币税和交易限制
     function _memeTransfer(uint256 amount) internal returns (uint256 taxAmount, uint256 transferAmount) {
-        address sender = msg.sender;
+        address sender = _msgSender();
         require(amount <= maxTxAmount, 'Exceeds maximum transaction amount');
         require(checkDailyTxLimit(sender), 'Exceeds daily transaction limit');
 
